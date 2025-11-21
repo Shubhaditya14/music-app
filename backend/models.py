@@ -1,12 +1,12 @@
 from sqlmodel import SQLModel, Field 
-from datetime import datetime
+from datetime import datetime, timezone
 
 class PlayLog(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     user_id: int
     song_id: int
     duration: int
-    played_at: datetime = Field(default_factory=datetime.utcnow)
+    played_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     
 class Song(SQLModel, table=True):

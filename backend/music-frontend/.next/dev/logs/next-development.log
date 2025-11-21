@@ -1,0 +1,32 @@
+[00:00:39.311] Server  ERROR   Error: Cannot find module 'next/dist/compiled/cookie'
+Require stack:
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/api-utils/get-cookie-parser.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/prepare-destination.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/middleware-route-matcher.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-utils/filesystem.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/start-server.js
+[00:00:39.323] Server  ERROR   Error: Cannot find module 'next/dist/compiled/cookie'
+Require stack:
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/api-utils/get-cookie-parser.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/prepare-destination.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/middleware-route-matcher.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-utils/filesystem.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/start-server.js
+[00:00:39.346] Server  ERROR   Error: Cannot find module 'next/dist/compiled/cookie'
+Require stack:
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/api-utils/get-cookie-parser.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/prepare-destination.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/middleware-route-matcher.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-utils/filesystem.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/start-server.js
+[00:00:39.358] Server  ERROR   Error: Cannot find module 'next/dist/compiled/cookie'
+Require stack:
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/api-utils/get-cookie-parser.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/prepare-destination.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/shared/lib/router/utils/middleware-route-matcher.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-utils/filesystem.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/router-server.js
+- /Users/shubhaditya/Desktop/everything/projects/music-app/backend/music-frontend/node_modules/next/dist/server/lib/start-server.js

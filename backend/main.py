@@ -167,6 +167,94 @@ async def get_song_details(song_id: int, user_id: int):
             "last_played": recent_play
         }
     
+@app.get("/songs")
+async def get_songs():
+    with Session(engine) as session:
+        songs = session.query(Song).all()
+        return songs
+
+@app.get("/users/{user_id}/recommendations/baseline")
+async def recommend_baseline(user_id: int):
+    with Session(engine) as session:
+
+        # Get the user's listening profile
+        user_stmt = (
+            select(
+                PlayLog.song_id,
+                func.count(PlayLog.id).label("play_count")
+            )
+            .where(PlayLog.user_id == user_id)
+            .group_by(PlayLog.song_id)
+        )
+
+        user_profile_rows = session.exec(user_stmt).all()
+        user_profile = {row[0]: row[1] for row in user_profile_rows}
+
+        if not user_profile:
+            return {"error": "User has no listening history"}
+
+        user_songs = set(user_profile.keys())
+
+        # Get all other users (SQLModel row-wrapped)
+        other_rows = session.exec(
+            select(User).where(User.id != user_id)
+        ).all()
+
+        similarities = []
+
+        for row in other_rows:
+            other = row[0]   # <-- FIX: extract User model
+
+            stmt = (
+                select(
+                    PlayLog.song_id,
+                    func.count(PlayLog.id)
+                )
+                .where(PlayLog.user_id == other.id)
+                .group_by(PlayLog.song_id)
+            )
+
+            rows = session.exec(stmt).all()
+            if not rows:
+                continue
+
+            other_profile = {r[0]: r[1] for r in rows}
+            other_songs = set(other_profile.keys())
+
+            overlap = len(user_songs & other_songs)
+
+            if overlap > 0:
+                similarities.append((other.id, overlap, other_profile))
+
+        if not similarities:
+            return {"error": "No similar users found"}
+
+        similarities.sort(key=lambda x: x[1], reverse=True)
+        top_similar = similarities[:3]
+
+        recommendation_scores = {}
+
+        for uid, overlap, profile in top_similar:
+            for song_id, count in profile.items():
+                if song_id not in user_songs:
+                    recommendation_scores[song_id] = recommendation_scores.get(song_id, 0) + count
+
+        sorted_recs = sorted(
+            recommendation_scores.items(),
+            key=lambda x: x[1],
+            reverse=True
+        )
+
+        final_recs = []
+        for song_id, score in sorted_recs:
+            song = session.get(Song, song_id)
+            if song:
+                final_recs.append({
+                    "song": song,
+                    "score": score
+                })
+
+        return final_recs
 
 
 create_db()
