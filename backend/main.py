@@ -82,21 +82,22 @@ def seed_data():
             return  # Already seeded
 
         songs = [
-            Song(id=1, title="See Me Now (featuring Beyoncé and Charlie Wilson)", artist="Kanye West", duration=364, audio_url="/static/audio/01 See Me Now (featuring Beyoncé and Charlie Wilson).mp3"),
-            Song(id=2, title="Hard Horn Nightmare", artist="Kanye West", duration=215, audio_url="/static/audio/02 Hard Horn Nightmare.mp3"),
-            Song(id=3, title="Power", artist="Kanye West", duration=292, audio_url="/static/audio/03 Power.mp3"),
-            Song(id=4, title="Chain Heavy (featuring Telib Kweli and Consequence)", artist="Kanye West", duration=277, audio_url="/static/audio/04 Chain Heavy (featuring Telib Kweli and Consequence).mp3"),
-            Song(id=5, title="So Appalled", artist="Kanye West", duration=429, audio_url="/static/audio/05 So Appalled.mp3"),
-            Song(id=6, title="What It Is", artist="Kanye West", duration=187, audio_url="/static/audio/06 What It Is.mp3"),
-            Song(id=7, title="Diamonds", artist="Kanye West", duration=263, audio_url="/static/audio/07 Diamonds.mp3"),
-            Song(id=8, title="Mama_s Boyfriend", artist="Kanye West", duration=182, audio_url="/static/audio/08 Mama_s Boyfriend.mp3"),
-            Song(id=9, title="Joy", artist="Kanye West", duration=219, audio_url="/static/audio/09 Joy.mp3"),
-            Song(id=10, title="Take One For The Team (featuring Pusha T, CyHi The Prynce)", artist="Kanye West", duration=248, audio_url="/static/audio/11 Take One For The Team (featuring Pusha T, CyHi The Prynce and Keri Hilson).mp3"),
-            Song(id=11, title="Shoot Up (featuring Bon Iver and Santigold)", artist="Kanye West", duration=193, audio_url="/static/audio/12 Shoot Up (featuring Bon Iver and Santigold).mp3"),
-            Song(id=12, title="Flashing Lights II", artist="Kanye West", duration=300, audio_url="/static/audio/13 Flashing Lights II.mp3"),
-            Song(id=13, title="Tragically Beautiful", artist="Kanye West", duration=255, audio_url="/static/audio/14 Tragically Beautiful.mp3"),
-            Song(id=14, title="Never See Me Again", artist="Kanye West", duration=278, audio_url="/static/audio/15 Never See Me Again.mp3"),
-        ]
+            Song(id=1,  title="Chain Heavy",             artist="Kanye West", duration=240, audio_url="/static/audio/chain_heavy.mp3"),
+            Song(id=2,  title="Diamonds",                artist="Kanye West", duration=210, audio_url="/static/audio/diamonds.mp3"),
+            Song(id=3,  title="Flashing Lights 2",       artist="Kanye West", duration=250, audio_url="/static/audio/flashing_lights_2.mp3"),
+            Song(id=4,  title="Hard Horn Nightmare",     artist="Kanye West", duration=205, audio_url="/static/audio/hard_horn_nightmare.mp3"),
+            Song(id=5,  title="Joy",                     artist="Kanye West", duration=230, audio_url="/static/audio/joy.mp3"),
+            Song(id=6,  title="Mama's Boyfriend",        artist="Kanye West", duration=215, audio_url="/static/audio/mamas_boyfriend.mp3"),
+            Song(id=7,  title="Never See Me Again",      artist="Kanye West", duration=260, audio_url="/static/audio/never_see_me_again.mp3"),
+            Song(id=8,  title="Power",                   artist="Kanye West", duration=292, audio_url="/static/audio/power.mp3"),
+            Song(id=9,  title="See Me Now",              artist="Kanye West", duration=310, audio_url="/static/audio/see_me_now.mp3"),
+            Song(id=10, title="Shoot Up",                artist="Kanye West", duration=200, audio_url="/static/audio/shoot_up.mp3"),
+            Song(id=11, title="So Appalled",             artist="Kanye West", duration=420, audio_url="/static/audio/so_appalled.mp3"),
+            Song(id=12, title="Take One for the Team",  artist="Kanye West", duration=255, audio_url="/static/audio/take_one_for_the_team.mp3"),
+            Song(id=13, title="Tragically Beautiful",    artist="Kanye West", duration=250, audio_url="/static/audio/tragically_beautiful.mp3"),
+            Song(id=14, title="What It Is",              artist="Kanye West", duration=180, audio_url="/static/audio/what_it_is.mp3"),
+        ]       
+
 
 
         users = [

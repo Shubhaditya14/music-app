@@ -16,8 +16,11 @@ export async function fetchTopSongs(user_id: number) {
 
 export async function fetchSongs() {
   const res = await fetch(`${BASE_URL}/songs`);
-  if (!res.ok) throw new Error("Failed to fetch songs");
-  return res.json();
+  const songs = await res.json();
+  return songs.map((s: any) => ({
+    ...s,
+    audio_url: `http://127.0.0.1:8000${s.audio_url}`,
+  }));
 }
 
 export async function logPlay(user_id: number, song_id: number, duration: number) {

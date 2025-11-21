@@ -1,20 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchRecentPlays, fetchTopSongs, fetchRecommendations } from "@/lib/api";
+import { fetchTopSongs, fetchRecommendations } from "@/lib/api";
 import SongCard from "@/components/SongCard";
 
 export default function HomePage() {
-  const [recent, setRecent] = useState<any[]>([]);
   const [top, setTop] = useState<any[]>([]);
   const [recs, setRecs] = useState<any[]>([]);
 
   useEffect(() => {
     async function load() {
-      const r = await fetchRecentPlays(1);
-      const t = await fetchTopSongs(1);
-      const recsData = await fetchRecommendations(1);
-      setRecent(r);
+      const t = await fetchTopSongs(1); // Assuming user_id 1
+      const recsData = await fetchRecommendations(1); // Assuming user_id 1
       setTop(t);
       setRecs(recsData);
     }
@@ -22,56 +19,36 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white p-6">
-
-      {/* Recently Played */}
-      <h1 className="text-3xl font-bold mb-6">Recently Played</h1>
-      <div className="flex space-x-4 overflow-x-auto pb-4">
-        {recent.map((entry: any) => (
-          <div key={entry.id} className="min-w-[200px]">
-            <SongCard
-              id={entry.song.id}
-              title={entry.song.title}
-              artist={entry.song.artist}
-              duration={entry.song.duration}
-              audio_url={entry.song.audio_url}
-            />
-          </div>
-        ))}
-      </div>
-
+    <div className="min-h-screen text-white p-6 md:ml-64">
       {/* Top Songs */}
-      <h1 className="text-3xl font-bold mt-10 mb-6">Top Songs This Week</h1>
-      <div className="flex space-x-4 overflow-x-auto pb-4">
+      <h1 className="text-3xl font-bold mb-6">Top Songs This Week</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {top.map((entry: any) => (
-          <div key={entry.song.id} className="min-w-[200px]">
-            <SongCard
-              id={entry.song.id}
-              title={entry.song.title}
-              artist={entry.song.artist}
-              duration={entry.song.duration}
-              audio_url={entry.song.audio_url}
-            />
-          </div>
+          <SongCard
+            key={entry.song.id}
+            id={entry.song.id}
+            title={entry.song.title}
+            artist={entry.song.artist}
+            duration={entry.song.duration}
+            audio_url={entry.song.audio_url}
+          />
         ))}
       </div>
 
       {/* Recommended For You */}
       <h1 className="text-3xl font-bold mt-10 mb-6">Recommended For You</h1>
-      <div className="flex space-x-4 overflow-x-auto pb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {Array.isArray(recs) && recs.map((entry: any) => (
-          <div key={entry.song.id} className="min-w-[200px]">
-            <SongCard
-              id={entry.song.id}
-              title={entry.song.title}
-              artist={entry.song.artist}
-              duration={entry.song.duration}
-              audio_url={entry.song.audio_url}
-            />
-          </div>
+          <SongCard
+            key={entry.song.id}
+            id={entry.song.id}
+            title={entry.song.title}
+            artist={entry.song.artist}
+            duration={entry.song.duration}
+            audio_url={entry.song.audio_url}
+          />
         ))}
       </div>
-
     </div>
   );
 }

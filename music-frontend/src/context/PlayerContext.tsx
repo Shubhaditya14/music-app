@@ -17,7 +17,13 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
   function playSong(song: any) {
     console.log("PLAYING:", song);
-    setCurrentSong(song);
+    setCurrentSong({
+      ...song,
+      audio_url: song.audio_url.startsWith("http")
+      ? song.audio_url
+      : `http://127.0.0.1:8000${song.audio_url}`,
+    });
+
     setIsPlaying(true);
   }
 
