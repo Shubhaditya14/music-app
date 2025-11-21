@@ -1,5 +1,14 @@
 from sqlmodel import SQLModel, Field 
+from datetime import datetime
 
+class PlayLog(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    user_id: int
+    song_id: int
+    duration: int
+    played_at: datetime = Field(default_factory=datetime.utcnow)
+
+    
 class Song(SQLModel, table=True):
     id: int = Field(primary_key=True)
     title: str
@@ -10,4 +19,3 @@ class Song(SQLModel, table=True):
 class User(SQLModel, table=True):
     id: int = Field(primary_key=True)
     name: str
-    
