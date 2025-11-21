@@ -19,6 +19,16 @@ engine = create_engine(sqlite_url, echo=True)
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all for dev
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 IST = pytz.timezone('Asia/Kolkata')
 
 @app.get("/songs/{song_id}")
@@ -72,9 +82,10 @@ def seed_data():
             return  # Already seeded
 
         songs = [
-            Song(id=1, title="Test Song", artist="Unknown Artist", duration=210, audio_url="https://example.com/audio1.mp3"),
-            Song(id=2, title="Another Song", artist="Someone", duration=180, audio_url="https://example.com/audio2.mp3")
+            Song(id=1, title="Test Song", artist="Unknown Artist", duration=210,audio_url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"),
+            Song(id=2, title="Another Song", artist="Someone", duration=180,audio_url="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"),
         ]
+
 
         users = [
             User(id=1, name="Alice"),
@@ -109,10 +120,16 @@ async def get_top_songs(user_id: int):
 
         results = session.exec(statement).all()
 
-        return [
-            {"song_id": song_id, "play_count": play_count}
-            for song_id, play_count in results
-        ]
+        output = []
+        for song_id, play_count in results:
+            song = session.get(Song, song_id)
+            if song:
+                output.append({
+                    "play_count": play_count,
+                    "song": song
+                })
+
+        return output
     
 @app.get("/users/{user_id}/recent")
 async def get_recent_plays(user_id: int):
@@ -122,9 +139,17 @@ async def get_recent_plays(user_id: int):
             .where(PlayLog.user_id == user_id)
             .order_by(PlayLog.played_at.desc())
         )
-        results = session.exec(statement).all()
-        return results
 
+        rows = session.exec(statement).all()
+
+        return [
+            {
+                "id": pl.id,
+                "played_at": pl.played_at,
+                "song": session.get(Song, pl.song_id)
+            }
+            for (pl,) in rows   # UNPACK HERE
+        ]
 
 @app.get("/songs/{song_id}/details/{user_id}")
 async def get_song_details(song_id: int, user_id: int):

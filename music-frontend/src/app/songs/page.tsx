@@ -12,10 +12,11 @@ export default async function SongsPage() {
         {songs.map((song: any) => (
             <SongCard
             key={song.id}
+            id={song.id} 
             title={song.title}
             artist={song.artist}
             duration={song.duration}
-            audio_url={song.audio_url}   // ← NEW
+            audio_url={song.audio_url}  
             />
         ))}
 
