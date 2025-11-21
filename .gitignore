@@ -81,3 +81,5 @@ coverage/
 *.tmp
 *.temp
 
+# Ignore static 
+backend/static

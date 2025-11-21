@@ -59,7 +59,7 @@ export default function HomePage() {
       {/* Recommended For You */}
       <h1 className="text-3xl font-bold mt-10 mb-6">Recommended For You</h1>
       <div className="flex space-x-4 overflow-x-auto pb-4">
-        {recs.map((entry: any) => (
+        {Array.isArray(recs) && recs.map((entry: any) => (
           <div key={entry.song.id} className="min-w-[200px]">
             <SongCard
               id={entry.song.id}

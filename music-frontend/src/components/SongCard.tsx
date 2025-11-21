@@ -14,9 +14,14 @@ export default function SongCard({ id, title, artist, duration, audio_url }: Son
 
   return (
     <div
-      onClick={() =>playSong({ id, title, artist, duration, audio_url })}
+      onClick={() => playSong({ id, title, artist, duration, audio_url })}
       className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-800 transition cursor-pointer"
     >
+      <img
+        src="http://localhost:8000/static/cover/kanye.jpg"
+        alt={title}
+        className="w-full h-40 object-cover rounded-lg mb-3"
+      />
       <h2 className="text-xl font-bold">{title}</h2>
       <p className="text-gray-400">{artist}</p>
       <p className="text-gray-500 text-sm">
