@@ -1,2 +1,83 @@
-venv/
+# ------------------------
+# GLOBAL / SYSTEM IGNORES
+# ------------------------
+.DS_Store
+Thumbs.db
+.env
+*.env
+*.log
+*.sqlite3
+*.db
+*.pyc
 __pycache__/
+*.swp
+.vscode/
+.idea/
+
+# ------------------------
+# BACKEND (Python / FastAPI)
+# ------------------------
+backend/__pycache__/
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/.pytest_cache/
+backend/venv/
+backend/.env
+backend/.DS_Store
+
+# SQLite DB
+backend/database.db
+
+# Logs
+backend/*.log
+backend/logs/
+backend/*.sqlite3
+
+# Bytecode
+backend/**/*.pyc
+backend/**/*.pyo
+
+# Uvicorn reload junk
+backend/.uvicorn/
+
+# Uploaded audio (optional)
+# Uncomment if you DON'T want to commit audio files:
+# backend/static/audio/
+
+# ------------------------
+# FRONTEND (Node / Next.js)
+# ------------------------
+music-frontend/node_modules/
+music-frontend/.next/
+music-frontend/out/
+music-frontend/.turbo/
+music-frontend/.vercel/
+music-frontend/coverage/
+music-frontend/.env.local
+music-frontend/.env.development
+music-frontend/.env.production
+music-frontend/.env.test
+
+# logs
+music-frontend/npm-debug.log*
+music-frontend/yarn-debug.log*
+music-frontend/yarn-error.log*
+music-frontend/pnpm-debug.log*
+
+# lockfiles (optional preference)
+# Uncomment if you want only one type of lock
+# music-frontend/package-lock.json
+# music-frontend/yarn.lock
+# music-frontend/pnpm-lock.yaml
+
+# ------------------------
+# GENERAL BUILD ARTIFACTS
+# ------------------------
+dist/
+build/
+coverage/
+*.cache
+*.tmp
+*.temp
+
